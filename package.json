@@ -1,0 +1,17 @@
+{
+  "name": "bana-ayir",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "web": "npm run dev -w web",
+    "mobile": "npm run start -w mobile",
+    "typecheck": "npm run typecheck -w @randevu/shared && npx tsc --noEmit -p apps/web && npx tsc --noEmit -p apps/mobile",
+    "test:db": "node supabase/tests/db.test.mjs supabase/migrations && node --no-warnings supabase/tests/sms-messages.test.ts"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.17"
+  }
+}

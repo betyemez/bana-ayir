@@ -1,0 +1,26 @@
+-- Sektör kategorileri: liste etiketi, rezervasyon modu ve kalemler için önerilen ek alanlar.
+-- item_fields: [{key, label, type: text|number|boolean|tags|select, options?}]
+insert into public.business_categories (slug, name, list_label, booking_mode, default_duration_minutes, item_fields, sort_order) values
+('kuafor',       'Kuaför',                 'Hizmetler',  'service',     45,  '[{"key":"gender","label":"Kime yönelik","type":"select","options":["Kadın","Erkek","Unisex"]}]', 10),
+('berber',       'Berber',                 'Hizmetler',  'service',     30,  '[]', 20),
+('guzellik',     'Güzellik Merkezi',       'Hizmetler',  'service',     60,  '[{"key":"sessions","label":"Seans sayısı","type":"number"}]', 30),
+('tirnak',       'Tırnak Stüdyosu',        'Hizmetler',  'service',     60,  '[]', 40),
+('masaj-spa',    'Masaj & Spa',            'Hizmetler',  'service',     60,  '[{"key":"couple","label":"Çift kişilik","type":"boolean"}]', 50),
+('restoran',     'Restoran',               'Menü',       'reservation', 90,  '[{"key":"allergens","label":"Alerjenler","type":"tags"},{"key":"vegetarian","label":"Vejetaryen","type":"boolean"},{"key":"vegan","label":"Vegan","type":"boolean"},{"key":"spicy","label":"Acı","type":"boolean"},{"key":"portion","label":"Porsiyon","type":"text"}]', 60),
+('kafe',         'Kafe',                   'Menü',       'reservation', 60,  '[{"key":"allergens","label":"Alerjenler","type":"tags"},{"key":"vegan","label":"Vegan","type":"boolean"}]', 70),
+('dis-hekimi',   'Diş Hekimi',             'Tedaviler',  'service',     30,  '[{"key":"requires_exam","label":"Ön muayene gerekir","type":"boolean"}]', 80),
+('klinik',       'Klinik / Muayenehane',   'Hizmetler',  'service',     20,  '[{"key":"branch","label":"Branş","type":"text"},{"key":"online","label":"Online görüşme","type":"boolean"}]', 90),
+('psikolog',     'Psikolog / Danışman',    'Seanslar',   'service',     50,  '[{"key":"online","label":"Online seans","type":"boolean"}]', 100),
+('diyetisyen',   'Diyetisyen',             'Hizmetler',  'service',     45,  '[{"key":"online","label":"Online görüşme","type":"boolean"}]', 110),
+('veteriner',    'Veteriner',              'Hizmetler',  'service',     30,  '[{"key":"species","label":"Hayvan türü","type":"tags"}]', 120),
+('pet-kuafor',   'Pet Kuaför',             'Hizmetler',  'service',     60,  '[{"key":"pet_size","label":"Hayvan boyu","type":"select","options":["Küçük","Orta","Büyük"]}]', 130),
+('spor',         'Spor Salonu / Stüdyo',   'Dersler',    'service',     60,  '[{"key":"level","label":"Seviye","type":"select","options":["Başlangıç","Orta","İleri"]}]', 140),
+('saha',         'Halı Saha / Kort',       'Sahalar',    'service',     60,  '[{"key":"surface","label":"Zemin","type":"text"},{"key":"indoor","label":"Kapalı","type":"boolean"}]', 150),
+('oto-yikama',   'Oto Yıkama / Bakım',     'Hizmetler',  'service',     45,  '[{"key":"vehicle","label":"Araç tipi","type":"select","options":["Otomobil","SUV","Ticari","Motosiklet"]}]', 160),
+('oto-servis',   'Oto Servis',             'Hizmetler',  'service',     60,  '[{"key":"vehicle","label":"Araç tipi","type":"text"}]', 170),
+('dovme',        'Dövme & Piercing',       'Hizmetler',  'service',     60,  '[]', 180),
+('fotograf',     'Fotoğraf Stüdyosu',      'Paketler',   'service',     60,  '[{"key":"photos_included","label":"Fotoğraf adedi","type":"number"}]', 190),
+('egitim',       'Kurs / Özel Ders',       'Dersler',    'service',     60,  '[{"key":"online","label":"Online","type":"boolean"},{"key":"level","label":"Seviye","type":"text"}]', 200),
+('konaklama',    'Butik Otel / Pansiyon',  'Odalar',     'reservation', 1440,'[{"key":"capacity","label":"Kişi kapasitesi","type":"number"},{"key":"amenities","label":"Olanaklar","type":"tags"}]', 210),
+('etkinlik',     'Etkinlik Mekânı',        'Paketler',   'reservation', 240, '[{"key":"capacity","label":"Kapasite","type":"number"}]', 220),
+('diger',        'Diğer',                  'Liste',      'service',     30,  '[]', 999);

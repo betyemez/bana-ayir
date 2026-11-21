@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf7f2;
+  --surface: #ffffff;
+  --surface-2: #f4efe7;
+  --foreground: #1d1a26;
+  --muted: #6d6878;
+  --line: #ebe5db;
+  --brand: #d4432a;
+  --brand-soft: #fde9e4;
+  --brand-fg: #ffffff;
+  --ink: #1d1a26;
+  --ink-fg: #ffffff;
+  --success: #15803d;
+  --success-soft: #dcfce7;
+  --warning: #b45309;
+  --warning-soft: #fef3c7;
+  --danger: #b42318;
+  --danger-soft: #fee4e2;
+  --info: #1d4ed8;
+  --info-soft: #dbeafe;
+  --shadow: 0 1px 2px rgb(29 26 38 / 0.04), 0 4px 16px rgb(29 26 38 / 0.06);
+  --shadow-lg: 0 2px 4px rgb(29 26 38 / 0.04), 0 12px 40px rgb(29 26 38 / 0.10);
+  /* Randevu takviminde personel/salon renkleri: koyu ton kenar ve nokta, açık ton kutucuk zemini */
+  --staff-1: #2563eb; --staff-1-soft: #dbeafe;
+  --staff-2: #7c3aed; --staff-2-soft: #ede9fe;
+  --staff-3: #0d9488; --staff-3-soft: #ccfbf1;
+  --staff-4: #d97706; --staff-4-soft: #fef3c7;
+  --staff-5: #db2777; --staff-5-soft: #fce7f3;
+  --staff-6: #16a34a; --staff-6-soft: #dcfce7;
+  --staff-7: #ea580c; --staff-7-soft: #ffedd5;
+  --staff-8: #0891b2; --staff-8-soft: #cffafe;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121017;
+    --surface: #1b1822;
+    --surface-2: #24202d;
+    --foreground: #efecf4;
+    --muted: #a39eae;
+    --line: #2e2a38;
+    --brand: #ff7a5c;
+    --brand-soft: #3a1f1a;
+    --brand-fg: #1d0d08;
+    --ink: #efecf4;
+    --ink-fg: #121017;
+    --success: #4ade80;
+    --success-soft: #11291b;
+    --warning: #fbbf24;
+    --warning-soft: #2d230b;
+    --danger: #f97066;
+    --danger-soft: #34140f;
+    --info: #93c5fd;
+    --info-soft: #14213d;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 12px 40px rgb(0 0 0 / 0.45);
+    --staff-1: #60a5fa; --staff-1-soft: #172554;
+    --staff-2: #a78bfa; --staff-2-soft: #2e1065;
+    --staff-3: #2dd4bf; --staff-3-soft: #042f2e;
+    --staff-4: #fbbf24; --staff-4-soft: #3b2506;
+    --staff-5: #f472b6; --staff-5-soft: #4a0d2b;
+    --staff-6: #4ade80; --staff-6-soft: #052e16;
+    --staff-7: #fb923c; --staff-7-soft: #431407;
+    --staff-8: #22d3ee; --staff-8-soft: #083344;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-fg: var(--brand-fg);
+  --color-ink: var(--ink);
+  --color-ink-fg: var(--ink-fg);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  /* Eski sınıf adlarıyla uyum */
+  --color-accent: var(--brand);
+  --color-accent-fg: var(--brand-fg);
+  --font-sans: var(--font-jakarta);
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  /* Dekoratif ışımalar yatay kaydırma çubuğu oluşturmasın */
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--brand-soft);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-fg shadow-card transition hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ink {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-ink-fg transition hover:opacity-90 active:scale-[0.98] disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-surface px-3.5 py-2 text-sm font-medium transition hover:border-foreground/20 hover:bg-surface-2 active:scale-[0.98] disabled:opacity-50;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm outline-none transition placeholder:text-muted/70 focus:border-brand focus:ring-4 focus:ring-brand/10;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-surface p-5 shadow-card;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold tracking-wide text-muted;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-medium transition hover:border-foreground/20;
+  }
+  .chip-active {
+    @apply border-ink bg-ink text-ink-fg hover:border-ink;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .section-title {
+    @apply text-lg font-bold tracking-tight;
+  }
+}
